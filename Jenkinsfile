@@ -3,7 +3,7 @@ def build_docker_image() {
         stage("Building image"){
             echo "Build Docker Image devopsabi/ab_demo_app:${new_version}"            
             script{
-                withDockerRegistry(url:'',credentialsId:'docker_hub_id'){
+                withDockerRegistry(url:'https://hub.docker.com/',credentialsId:'docker_hub_id'){
                     current_deploy_version = sh (returnStdout: true, script: 'cat new_version.txt').trim()
                     docker.build('devopsabi/ab_demo_app:'+current_deploy_version).push()
                 }
@@ -30,7 +30,7 @@ def update_app() {
         
             stage('checkout_demo_app') {
                 steps {
-                    git branch:"main", url: '', credentialsId:'githubab'
+                    git branch:"main", url: 'https://github.com/devopsabi/Docker_Test.git', credentialsId:'githubab'
                 }
     
             }
