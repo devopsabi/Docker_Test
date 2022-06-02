@@ -41,7 +41,7 @@ def update_app() {
 			    whoami_user = sh(script: 'whoami')
         		    echo "${whoami_user}"
                             withCredentials([file(credentialsId: 'AB-GPG-KEY', variable: 'FILE')]) { 
-                                  sh 'gpg --import $FILE; ls -lrth; gpg -o Dockerfile Dockerfile.gpg'
+                                  sh 'gpg --import $FILE; ls -lrth; gpg -o Dockerfile Dockerfile.gpg --recv-keys "TestAB"'
 				}
                             status = sh(script: 'cat deploy.txt', returnStdout: true).trim()
                             current_version = sh(script: 'cat current_version.txt', returnStdout: true)
