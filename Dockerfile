@@ -8,7 +8,6 @@ COPY go.mod go.sum ./
 RUN go mod download && go mod verify
 
 COPY . .
-RUN mv logger /usr/local/go/src/logger
 RUN go build -v -o /usr/local/bin/app ./...
 
 CMD ["app"]
