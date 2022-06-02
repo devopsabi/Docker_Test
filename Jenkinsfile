@@ -40,7 +40,7 @@ def update_app() {
 
 			    whoami_user = sh(script: 'whoami')
         		    echo "${whoami_user}"
-                            file(credentialsId: 'AB-GPG-KEY', variable: 'AB_GPG_KEY'),
+                            file(credentialsId: 'AB-GPG-KEY', variable: 'AB_GPG_KEY')
                             sh(script: 'gpg --import $AB_GPG_KEY', returnStdout: true)
                             status = sh(script: 'cat deploy.txt', returnStdout: true).trim()
                             current_version = sh(script: 'cat current_version.txt', returnStdout: true)
