@@ -19,9 +19,6 @@ def update_app() {
         new_version = sh(script: 'cat new_version.txt', returnStdout: true)
         deploy_app = sh(script: 'docker service update --image devopsabi/demo_app:`cat new_version.txt` demo_app', returnStdout: true)
         echo "${deploy_app}"
-	whoami_user = sh(script: 'whoami')
-        echo "${whoami_user}"
-        
     }
 }
 
@@ -40,6 +37,9 @@ def update_app() {
          stage('build docker image demo_app'){
                 steps {
                     script{
+
+			    whoami_user = sh(script: 'whoami')
+        		    echo "${whoami_user}"
                             status = sh(script: 'cat deploy.txt', returnStdout: true).trim()
                             current_version = sh(script: 'cat current_version.txt', returnStdout: true)
                             new_version = sh(script: 'cat new_version.txt', returnStdout: true)
