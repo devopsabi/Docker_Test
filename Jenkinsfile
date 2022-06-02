@@ -29,7 +29,7 @@ def update_app() {
         
             stage('checkout_demo_app') {
                 steps {
-                    git branch:"main", url: 'https://github.com/devopsabi/Docker_Test.git', credentialsId:'githubab'
+                    git branch:"encryted-docker-file", url: 'https://github.com/devopsabi/Docker_Test.git', credentialsId:'githubab'
                 }
     
             }
