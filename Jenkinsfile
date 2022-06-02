@@ -3,7 +3,7 @@ def build_docker_image() {
         stage("Building image"){
             echo "Build Docker Image devopsabi/ab_demo_app:${new_version}"            
             script{
-                withDockerRegistry(url:'https://hub.docker.com/',credentialsId:'docker_hub_id'){
+                withDockerRegistry(url:'https://index.docker.io/v1/',credentialsId:'docker_hub_id'){
                     current_deploy_version = sh (returnStdout: true, script: 'cat new_version.txt').trim()
                     docker.build('devopsabi/ab_demo_app:'+current_deploy_version).push()
                 }
