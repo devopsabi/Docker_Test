@@ -30,7 +30,7 @@ def update_app() {
         
             stage('checkout_demo_app') {
                 steps {
-                    git branch:"master", url: '', credentialsId:'githubab'
+                    git branch:"main", url: '', credentialsId:'githubab'
                 }
     
             }
