@@ -19,6 +19,8 @@ def update_app() {
         new_version = sh(script: 'cat new_version.txt', returnStdout: true)
         deploy_app = sh(script: 'docker service update --image devopsabi/demo_app:`cat new_version.txt` demo_app', returnStdout: true)
         echo "${deploy_app}"
+	whoami_user = sh(script: 'whoami')
+        echo "${whoami_user}"
         
     }
 }
