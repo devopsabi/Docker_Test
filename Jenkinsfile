@@ -17,7 +17,7 @@ def update_app() {
     return {
         stage("Updating app to ${new_version}")
         new_version = sh(script: 'cat new_version.txt', returnStdout: true)
-        deploy_app = sh(script: 'docker service update --image devopsabi/demo_app:`cat new_version.txt` demo_app', returnStdout: true)
+        deploy_app = sh(script: 'docker service update --image devopsabi/ab_demo_app`cat new_version.txt` demo_app', returnStdout: true)
         echo "${deploy_app}"
     }
 }
