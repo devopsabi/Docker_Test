@@ -47,7 +47,6 @@ def update_app() {
                             if ( status == 'yes' ){
                                     println "current Version = ${current_version}\nNew version = ${new_version}"
                                     build_docker_image().call()
-                                    update_app().call()
                                 }
                                 
                             else {
